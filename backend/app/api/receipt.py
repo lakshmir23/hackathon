@@ -10,6 +10,7 @@ router = APIRouter(
     tags=["Receipt"]
 )
 
+
 @router.post("/upload")
 async def upload_receipt(file: UploadFile = File(...)):
     # 1. OCR
@@ -38,7 +39,7 @@ async def upload_receipt(file: UploadFile = File(...)):
         total_co2 += co2
 
     save_receipt(items, total_co2)
-    print("Receipt saved with total CO2:", total_co2)
+   
 
     # 4. Return result
     return {

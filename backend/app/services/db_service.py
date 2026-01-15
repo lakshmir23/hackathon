@@ -1,14 +1,18 @@
 from app.config.firebase import db
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 def save_receipt(items, total_co2):
+    now = datetime.now(timezone.utc)
+
     data = {
         "items": items,
         "total_co2": total_co2,
-        "date": datetime.now().strftime("%Y-%m-%d")
+        "created_at": now,                       # ✅ timezone-aware
+        "date": now.strftime("%Y-%m-%d")         # for UI grouping
     }
 
     db.collection("receipts").add(data)
+
 
 def get_all_receipts():
     receipts = []

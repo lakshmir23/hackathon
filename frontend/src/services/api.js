@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000"; // replace with your backend URL
+const API_URL = "http://127.0.0.1:8000"; // replace with your backend URL
 
 export async function uploadReceipt(file) {
   const formData = new FormData();
